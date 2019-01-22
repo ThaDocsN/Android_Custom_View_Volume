@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 public class VolumeControlView extends View {
-    private static final int STROKE = 1;
+    private static final int STROKE = 5;
     protected Paint paintOuter, paintInner, paintKnob;
     protected int currentSetting, rotation;
 
@@ -31,24 +31,24 @@ public class VolumeControlView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        int height = getHeight();
-        int width = getWidth();
-        int radius = 0;
+        int y = getHeight() /2;
+        int x = getWidth() /2;
+        int radius = 100;
 
 
-        if (height > width){
-            radius = width -10;
+        if (y > x){
+            radius = x -10;
         }else {
-            radius = height - 10;
+            radius = y - 10;
         }
 
         canvas.rotate(rotation);
 
-        int knob = (int) (radius * .90);
-        int smallCircle = (int) (radius * .10);
-        canvas.drawCircle(width, height, radius, paintOuter);
-        canvas.drawCircle(width, height, smallCircle, paintInner);
-        canvas.drawCircle(width, height, knob, paintKnob);
+        int knob = (int) (radius * .90f);
+        int smallCircle = (int) (radius * .10f);
+        canvas.drawCircle(x, y, radius, paintOuter);
+        canvas.drawCircle(x, y, smallCircle, paintInner);
+        canvas.drawCircle(x, y, knob, paintKnob);
     }
 
     public VolumeControlView(Context context, @Nullable AttributeSet attrs) {
@@ -80,8 +80,8 @@ public class VolumeControlView extends View {
         if (attrs != null){
             TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.VolumeControlView);
             paintInner.setColor(typedArray.getColor(R.styleable.VolumeControlView_inner_circle, Color.BLUE));
-            paintKnob.setColor(typedArray.getColor(R.styleable.VolumeControlView_inner_circle, Color.WHITE));
-            paintOuter.setColor(typedArray.getColor(R.styleable.VolumeControlView_inner_circle, Color.RED));
+            paintKnob.setColor(typedArray.getColor(R.styleable.VolumeControlView_knob_circle, Color.WHITE));
+            paintOuter.setColor(typedArray.getColor(R.styleable.VolumeControlView_outer_circle, Color.RED));
             typedArray.recycle();
         }
     }
