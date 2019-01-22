@@ -33,7 +33,7 @@ public class VolumeControlView extends View {
 
         int y = getHeight() /2;
         int x = getWidth() /2;
-        int radius = 100;
+        int radius = 0;
 
 
         if (y > x){
@@ -44,8 +44,8 @@ public class VolumeControlView extends View {
 
         canvas.rotate(rotation);
 
-        int knob = (int) (radius * .90f);
-        int smallCircle = (int) (radius * .10f);
+        int knob = (int) (radius * .10f);
+        int smallCircle = (int) (radius * .90f);
         canvas.drawCircle(x, y, radius, paintOuter);
         canvas.drawCircle(x, y, smallCircle, paintInner);
         canvas.drawCircle(x, y, knob, paintKnob);
@@ -79,9 +79,9 @@ public class VolumeControlView extends View {
 
         if (attrs != null){
             TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.VolumeControlView);
+            paintOuter.setColor(typedArray.getColor(R.styleable.VolumeControlView_outer_circle, Color.RED));
             paintInner.setColor(typedArray.getColor(R.styleable.VolumeControlView_inner_circle, Color.BLUE));
             paintKnob.setColor(typedArray.getColor(R.styleable.VolumeControlView_knob_circle, Color.WHITE));
-            paintOuter.setColor(typedArray.getColor(R.styleable.VolumeControlView_outer_circle, Color.RED));
             typedArray.recycle();
         }
     }
