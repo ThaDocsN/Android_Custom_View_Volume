@@ -19,6 +19,14 @@ public class VolumeControlView extends View {
         init(null);
     }
 
+    public int getCurrentSetting() {
+        return currentSetting;
+    }
+
+    public void setCurrentSetting(int currentSetting) {
+        this.currentSetting = currentSetting;
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
