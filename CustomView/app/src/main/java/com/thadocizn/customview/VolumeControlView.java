@@ -30,6 +30,20 @@ public class VolumeControlView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        int height = getHeight();
+        int width = getWidth();
+        int radius = 0;
+
+        canvas.rotate(rotation);
+
+        canvas.drawCircle();
+
+        if (height > width){
+            radius = width -10;
+        }else {
+            radius = height - 10;
+        }
     }
 
     public VolumeControlView(Context context, @Nullable AttributeSet attrs) {
