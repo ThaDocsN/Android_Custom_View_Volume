@@ -35,15 +35,20 @@ public class VolumeControlView extends View {
         int width = getWidth();
         int radius = 0;
 
-        canvas.rotate(rotation);
-
-        canvas.drawCircle();
 
         if (height > width){
             radius = width -10;
         }else {
             radius = height - 10;
         }
+
+        canvas.rotate(rotation);
+
+        int knob = (int) (radius * .90);
+        int smallCircle = (int) (radius * .10);
+        canvas.drawCircle(width, height, radius, paintOuter);
+        canvas.drawCircle(width, height, smallCircle, paintInner);
+        canvas.drawCircle(width, height, knob, paintKnob);
     }
 
     public VolumeControlView(Context context, @Nullable AttributeSet attrs) {
