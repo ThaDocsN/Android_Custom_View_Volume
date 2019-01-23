@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 public class VolumeControlView extends View {
@@ -25,6 +26,19 @@ public class VolumeControlView extends View {
 
     public void setCurrentSetting(int currentSetting) {
         this.currentSetting = currentSetting;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+            int startPoint = (int) event.getX();
+            break;
+
+            case MotionEvent.ACTION_MOVE:
+                int endPoint = (int) event.getX();
+        }
+        return super.dispatchTouchEvent(event);
     }
 
     @Override
