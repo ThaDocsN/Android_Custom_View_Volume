@@ -12,6 +12,7 @@ import android.view.View;
 
 public class VolumeControlView extends View {
     private static final int STROKE = 5;
+    protected int distance, start, end;
     protected Paint paintOuter, paintInner, paintKnob;
     protected int currentSetting, rotation;
 
@@ -32,11 +33,12 @@ public class VolumeControlView extends View {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
-            int startPoint = (int) event.getX();
+            start = (int) event.getX();
             break;
 
             case MotionEvent.ACTION_MOVE:
-                int endPoint = (int) event.getX();
+                end = (int) event.getX();
+                distance = end - start;
         }
         return super.dispatchTouchEvent(event);
     }
