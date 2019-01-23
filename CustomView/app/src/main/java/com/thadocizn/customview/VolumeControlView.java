@@ -39,8 +39,21 @@ public class VolumeControlView extends View {
             case MotionEvent.ACTION_MOVE:
                 end = (int) event.getX();
                 distance = end - start;
+                rotation = distance;
+                int maximumRotation = 100;
+                int minimumRotation = 0;
+                if (rotation > maximumRotation){
+                    rotation = maximumRotation;
+                }
+
+                if (rotation < minimumRotation){
+                    rotation = minimumRotation;
+                }
+
+                setCurrentSetting(rotation);
+                invalidate();
         }
-        return super.dispatchTouchEvent(event);
+        return true;
     }
 
     @Override
