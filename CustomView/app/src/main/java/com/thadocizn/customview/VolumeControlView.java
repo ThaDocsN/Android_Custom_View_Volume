@@ -40,8 +40,10 @@ public class VolumeControlView extends View {
                 end = (int) event.getX();
                 distance = end - start;
                 rotation = distance;
+
                 int maximumRotation = 100;
                 int minimumRotation = 0;
+
                 if (rotation > maximumRotation){
                     rotation = maximumRotation;
                 }
@@ -52,7 +54,12 @@ public class VolumeControlView extends View {
 
                 setCurrentSetting(rotation);
                 invalidate();
+                break;
+
+            case MotionEvent.ACTION_UP:
+                break;
         }
+
         return true;
     }
 
