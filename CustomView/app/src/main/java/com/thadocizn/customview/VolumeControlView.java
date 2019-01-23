@@ -46,6 +46,7 @@ public class VolumeControlView extends View {
 
         int knob = (int) (radius * .10f);
         int smallCircle = (int) (radius * .90f);
+
         canvas.drawCircle(x, y, radius, paintOuter);
         canvas.drawCircle(x, y, smallCircle, paintInner);
         canvas.drawCircle(x, y, knob, paintKnob);
@@ -67,20 +68,21 @@ public class VolumeControlView extends View {
     }
 
     protected void init(AttributeSet attrs){
-        paintInner = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintKnob  = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paintOuter = new Paint(Paint.ANTI_ALIAS_FLAG);
 
+        paintOuter = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintOuter.setStyle(Paint.Style.FILL);
+
+        paintKnob  = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintKnob.setStyle(Paint.Style.FILL);
 
+        paintInner = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintInner.setStyle(Paint.Style.STROKE);
         paintInner.setStrokeWidth(STROKE);
 
         if (attrs != null){
             TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.VolumeControlView);
             paintOuter.setColor(typedArray.getColor(R.styleable.VolumeControlView_outer_circle, Color.RED));
-            paintInner.setColor(typedArray.getColor(R.styleable.VolumeControlView_inner_circle, Color.BLUE));
+            paintInner.setColor(typedArray.getColor(R.styleable.VolumeControlView_inner_circle, Color.YELLOW));
             paintKnob.setColor(typedArray.getColor(R.styleable.VolumeControlView_knob_circle, Color.WHITE));
             typedArray.recycle();
         }
